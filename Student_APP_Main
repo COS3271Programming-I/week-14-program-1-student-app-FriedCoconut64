@@ -1,0 +1,172 @@
+package myMain;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.io.FileNotFoundException;
+import java.io.DataInput;
+import java.io.File;
+
+
+class Person {//Class with data of people
+	static Scanner userinput = new Scanner(System.in);
+	String firstName;
+	String lastName;
+	String gender;
+	int age;
+	int weight;
+	int height;
+	String ethnicGroup;
+	String religion;
+	
+	void Greeting() {//greeting method
+		System.out.print("Hello there!");
+	}
+	void Prayer() {//prayer method
+		System.out.print("Lord, thank you for this day. Please guide my thoughts, my words, and my actions. Help me to do your will through everything in my life. Amen.");
+	}
+	void Nap() {//nap method
+		System.out.print("You feel rested");
+	}
+	void Eat() {//eating method
+		System.out.print("Your belly is full from cafeteria food");
+	}
+	void RemindName() {//get name method
+		System.out.print(firstName + " " + lastName);
+	}
+	String ChangeReligion() {//change religion method
+		System.out.println("What would you like to be?");
+		String newReligion = userinput.nextLine();
+		
+		return newReligion;
+		
+	}
+}
+
+public class MyClass {
+	 
+	 static Scanner userinput = new Scanner(System.in);
+
+	 public static void main (String[] args){
+		 
+		System.out.println("Create a: ");
+		System.out.println("1. Regular Person");
+		System.out.println("2. Student");
+		System.out.println("Choice: ");
+		int typeChoice = userinput.nextInt();
+		userinput.nextLine();
+		
+		
+		Person person1;//create a new person
+		
+		if (typeChoice == 2) {
+			person1 = new Student();
+		}else {
+			person1 = new Person();
+		}
+		
+		
+		System.out.print("What is the persons first name");//begin asking user for data
+		person1.firstName = userinput.nextLine();
+		System.out.print("What is the persons last name");
+		person1.lastName = userinput.nextLine();
+		System.out.print("What is the persons gender");
+		person1.gender = userinput.nextLine();
+		System.out.print("What is the persons age");
+		person1.age = userinput.nextInt();
+		userinput.nextLine();
+		System.out.print("What is the persons weight in lbs");
+		person1.weight = userinput.nextInt();
+		userinput.nextLine();
+		System.out.print("What is the persons height in inches");
+		person1.height = userinput.nextInt();
+		userinput.nextLine();
+		System.out.print("What is the persons ethnic group");
+		person1.ethnicGroup = userinput.nextLine();
+		System.out.print("What is the persons religion");
+		person1.religion = userinput.nextLine();
+		
+		
+		if (person1 instanceof Student) {
+			Student s = (Student) person1;
+			
+			System.out.print("Major: ");
+			s.major = userinput.nextLine();
+			
+			System.out.print("Class Rank: ");
+			s.classRank = userinput.nextLine();
+			
+			System.out.print("Email: ");
+			s.email = userinput.nextLine();
+		}
+		
+		//display info and menu for actions
+		System.out.println("---------------------");//Print out stored person data
+		System.out.println("Name: " + person1.firstName + " " + person1.lastName);
+		System.out.println("\nGender; " + person1.gender);
+		System.out.println("\nAge: " + person1.age);
+		System.out.println("\nWeight: " + person1.weight);
+		System.out.println("\nHeight: " + person1.height);
+		System.out.println("\nEthnic Group: " + person1.ethnicGroup);
+		System.out.println("\nReligion: " + person1.religion);
+		
+		if (person1 instanceof Student) {
+			System.out.println("--- Student Info ---");
+			((Student) person1).DisplayStudentInfo();
+		}
+		
+		
+		System.out.println("----------------------");
+		System.out.println("1. Say a greeting");
+		System.out.println("2. Say a prayer");
+		System.out.println("3. Take a nap");
+		System.out.println("4. Eat Something");
+		System.out.println("5. Name reminder");
+		System.out.println("6. Change Religion");
+		System.out.println("----------------------");
+		
+		if (person1 instanceof Student) {
+			System.out.println("7. Go to Class");
+			System.out.println("8. Show student info");
+		}
+		
+		
+		System.out.println("Choose your option: ");
+		int choice = userinput.nextInt();
+		
+		//loop for choices and results
+		if (choice == 1) {
+			System.out.println("----------------------");
+			person1.Greeting();
+		}else if (choice == 2) {
+			System.out.println("----------------------");
+			person1.Prayer();
+		}else if (choice == 3) {
+			System.out.println("----------------------");
+			person1.Nap();
+		}else if (choice == 4) {
+			System.out.println("----------------------");
+			person1.Eat();
+		}else if (choice == 5) {
+			System.out.println("----------------------");
+			person1.RemindName();
+		}else if (choice == 6) {
+			String changedReligion = person1.ChangeReligion();
+			System.out.println("----------------------");
+			System.out.println("You are now a " + changedReligion);
+		}
+		if (person1 instanceof Student) {
+			Student s = (Student) person1;
+			
+			if (choice == 7) {
+				s.GoToClass();
+			}else if (choice == 8) {
+				s.DisplayStudentInfo();
+			}
+		}
+	 }
+}
