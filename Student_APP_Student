@@ -1,0 +1,19 @@
+package myMain;
+
+public class Student extends Person {
+	String major;
+	String classRank;
+	String email;
+	
+	void GoToClass() {
+		System.out.println(firstName + " is going to class.");
+	}
+	
+	void DisplayStudentInfo() {
+		System.out.println("Major: " + major);
+		System.out.println("Class Rank: " + classRank);
+		System.out.println("email: " + email);
+		
+	}
+
+}
